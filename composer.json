@@ -1,0 +1,43 @@
+{
+    "name": "thepany/template",
+    "description": "Convert word templates to pdf",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Cristian Gomez",
+            "email": "cristiangomeze@hotmail.com"
+        }
+    ],
+    "homepage": "https://github.com/thepany/template",
+    "keywords": ["Laravel", "Template"],
+    "require": {
+        "illuminate/support": "~6|~7",
+        "phpoffice/phpword": "^0.17.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^8.0",
+        "mockery/mockery": "^1.1",
+        "orchestra/testbench": "~3|~4",
+        "sempro/phpunit-pretty-print": "^1.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Thepany\\Template\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Thepany\\Template\\Tests\\": "tests"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Thepany\\Template\\TemplateServiceProvider"
+            ],
+            "aliases": {
+                "Template": "Thepany\\Template\\Facades\\Template"
+            }
+        }
+    }
+}
