@@ -5,7 +5,7 @@
 [![Build Status][ico-travis]][link-travis]
 [![StyleCI][ico-styleci]][link-styleci]
 
-This is where your description should go. Take a look at [contributing.md](contributing.md) to see a to do list.
+This is a wrapper to use the [phpword template](https://phpword.readthedocs.io/en/latest/templates-processing.html), which allows you to have the final document rendered in the browser. Take a look at [contributing.md](contributing.md) to see a to do list.
 
 ## Installation
 
@@ -16,6 +16,48 @@ $ composer require thepany/template
 ```
 
 ## Usage
+
+```php
+
+use Thepany\Template\Template;
+
+$values = [
+          'firstname' => 'John',
+          'lastname' => 'Doe'
+];
+
+$valuesImages = [
+    'company_logo' => [
+        'path' => '/home/user/wallpaper/wallpaper.png',
+        'width' => 200, 
+        'height' => 200, 
+        'ratio' => false
+    ]
+];
+
+return Template::make('/home/user/any_word_document.docx')
+        ->addValues($values)
+        ->addImages($valuesImages)
+        ->preview();
+```
+
+```php
+
+use Thepany\Template\Filters\Filter;
+
+$values = [
+    [
+        'key' => 'fecha',
+        'value' => '2019-08-08',
+        'filters' => ['DateLetter'] // DateLetter, NumberLetter, NumericFormat:2, DateFormat:LLLL
+    ]
+];
+
+Filter::make($values)->toArray();
+
+// 'fecha' => 'Ocho (8) Días del mes de Agosto del año Dos Mil Diecinueve (2019)'
+
+```
 
 ## Change log
 
