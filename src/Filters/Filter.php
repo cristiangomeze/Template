@@ -38,7 +38,9 @@ class Filter implements Arrayable
      */
     public function toArray()
     {
-        return $this->getValues();
+        return $this->getValues()
+            ->collapse()
+            ->toArray();
     }
 
     protected function getValues()

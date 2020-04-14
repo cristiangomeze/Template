@@ -19,7 +19,7 @@ class FilterTest extends TestCase
             ]
         ];
 
-        $this->assertTrue('2020-03-01' === Filter::make($values)->toArray()[0]['FECHA']);
+        $this->assertTrue('2020-03-01' === Filter::make($values)->toArray()['FECHA']);
     }
 
     /** @test */
@@ -67,7 +67,7 @@ class FilterTest extends TestCase
 
         $this->assertTrue(
             'Ocho (8) Días del mes de Agosto del año Dos Mil Diecinueve (2019)'
-            == Filter::make($values)->toArray()[0]['FECHA']
+            == Filter::make($values)->toArray()['FECHA']
         );
     }
 
@@ -84,7 +84,7 @@ class FilterTest extends TestCase
 
         $this->assertTrue(
             'RD$ 105.00, (ciento cinco Pesos Dominicanos)'
-            == Filter::make($values)->toArray()[0]['MONTO']
+            == Filter::make($values)->toArray()['MONTO']
         );
     }
 
@@ -99,7 +99,7 @@ class FilterTest extends TestCase
             ]
         ];
 
-        $this->assertTrue('1,000.00' === Filter::make($values)->toArray()[0]['MONTO']);
+        $this->assertTrue('1,000.00' === Filter::make($values)->toArray()['MONTO']);
     }
 
     /** @test */
@@ -113,6 +113,6 @@ class FilterTest extends TestCase
             ]
         ];
 
-        $this->assertTrue('domingo, 1 de marzo de 2020 0:00' === Filter::make($values)->toArray()[0]['FECHA']);
+        $this->assertTrue('domingo, 1 de marzo de 2020 0:00' === Filter::make($values)->toArray()['FECHA']);
     }
 }
