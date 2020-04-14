@@ -46,7 +46,7 @@ class Converter
 
     private function makeCommand(): string
     {
-        return config('template.command.bin')[config('template.command.default')]
+        return escapeshellarg(config('template.command.bin')[config('template.command.default')])
             .' --headless --convert-to pdf '.escapeshellarg($this->docxFile->getLocalPath()).' --outdir '
             .config('template.temporary_files.local_path')
             .config('template.temporary_files.prefix_folder');

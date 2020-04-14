@@ -16,7 +16,8 @@ return [
         'default' => 'linux',
 
         'bin' => [
-            'linux' => 'libreoffice'
+            'linux' => 'libreoffice',
+            'windows' => 'c:\Program Files\LibreOffice\program\soffice',
         ]
     ],
     'temporary_files' => [
