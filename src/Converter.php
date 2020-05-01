@@ -2,14 +2,15 @@
 
 namespace Thepany\Template;
 
-use Illuminate\Support\Facades\Log;
-use Thepany\Template\Exceptions\CannotConvertException;
 use Thepany\Template\Files\LocalTemporaryFile;
+use Symfony\Component\Process\Process;
+use Symfony\Component\Process\Exception\ProcessFailedException;
 
 class Converter
 {
     protected $docxFile;
     protected $pdfFile;
+    protected $timeout = 2000;
 
     public function __destruct()
     {
@@ -27,50 +28,42 @@ class Converter
 
     public function convert(): LocalTemporaryFile
     {
-        $shell = $this->execCommand($this->makeCommand());
-
-        if ($shell['return'] != 0) {
-            Log::error($shell);
-            throw new CannotConvertException;
-        }
+        $this->execCommand();
 
         return new LocalTemporaryFile($this->getPathConvertedPdfFile());
     }
-
 
     private function getPathConvertedPdfFile(): string
     {
         return config('template.temporary_files.local_path').config('template.temporary_files.prefix_folder').'/'.$this->docxFile->getFileName().'.pdf';
     }
 
-
-    private function makeCommand(): string
+    private function execCommand()
     {
-        return escapeshellarg(config('template.command.bin')[config('template.command.default')])
-            .' --headless --convert-to pdf '.escapeshellarg($this->docxFile->getLocalPath()).' --outdir '
-            .config('template.temporary_files.local_path')
-            .config('template.temporary_files.prefix_folder');
+        $process = (new Process($this->makeCommand()))->setTimeout($this->timeout);
+        $process->run();
+
+        if (! $process->isSuccessful()) {
+            throw new ProcessFailedException($process);
+        }
+
+        return $process->getOutput();
     }
 
-    private function execCommand($cmd, $input = ''): array
+    private function makeCommand(): array
     {
-        $process = proc_open($cmd, [0 => ['pipe', 'r'], 1 => ['pipe', 'w'], 2 => ['pipe', 'w']], $pipes);
-
-        fwrite($pipes[0], $input);
-        fclose($pipes[0]);
-
-        $stdout = stream_get_contents($pipes[1]);
-        fclose($pipes[1]);
-
-        $stderr = stream_get_contents($pipes[2]);
-        fclose($pipes[2]);
-
-        $rtn = proc_close($process);
+        $bin = config('template.command.bin')[config('template.command.default')];
+        $tempDir = $this->docxFile->getLocalPath();
+        $outDir = config('template.temporary_files.local_path').config('template.temporary_files.prefix_folder');
 
         return [
-            'stdout' => $stdout,
-            'stderr' => $stderr,
-            'return' => $rtn
+            $bin,
+            '--headless',
+            '--convert-to',
+            'pdf',
+            $tempDir,
+            '--outdir',
+            $outDir
         ];
     }
 

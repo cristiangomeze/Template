@@ -11,14 +11,15 @@
     "homepage": "https://github.com/thepany/template",
     "keywords": ["Laravel", "Template"],
     "require": {
-        "illuminate/support": "~6|~7",
+        "illuminate/support": "~7",
         "phpoffice/phpword": "^0.17.0",
-        "kwn/number-to-words": "^1.9"
+        "kwn/number-to-words": "^1.9",
+        "symfony/process": "^5.0"
     },
     "require-dev": {
-        "phpunit/phpunit": "^8.0",
-        "mockery/mockery": "^1.1",
-        "orchestra/testbench": "~3|~4",
+        "phpunit/phpunit": "^8.5",
+        "mockery/mockery": "^1.3.1",
+        "orchestra/testbench": "~5",
         "sempro/phpunit-pretty-print": "^1.0"
     },
     "autoload": {
