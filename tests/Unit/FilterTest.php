@@ -95,7 +95,7 @@ class FilterTest extends TestCase
             [
                 'key' => 'MONTO',
                 'value' => 1000,
-                'filters' => ['NumericFormat:2']
+                'filters' => ['NumberFormat:2']
             ]
         ];
 
