@@ -44,7 +44,7 @@ trait AppliesFilters
         return 'RD$ ' .number_format($value, 2) .', ('. $numberTransformer->toWords($value) .' Pesos Dominicanos)';
     }
 
-    public function appliesNumericFormat($value, $parameters)
+    public function appliesNumberFormat($value, $parameters)
     {
         $decimal = count($parameters) == 1 ? $parameters[0] : 0;
 
