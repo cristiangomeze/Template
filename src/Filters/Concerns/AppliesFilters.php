@@ -39,9 +39,9 @@ trait AppliesFilters
     public function appliesNumberLetter($value, $parameters)
     {
         $numberToWords = new NumberToWords();
-        $numberTransformer = $numberToWords->getNumberTransformer('es');
+        $currencyTransformer = $numberToWords->getCurrencyTransformer('es');
 
-        return 'RD$ ' .number_format($value, 2) .', ('. $numberTransformer->toWords($value) .' Pesos Dominicanos)';
+        return 'RD$ ' .number_format($value, 2) .', ('. ucfirst($currencyTransformer->toWords($value * 100, 'DOP')) .')';
     }
 
     public function appliesNumberFormat($value, $parameters)

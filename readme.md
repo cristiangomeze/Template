@@ -59,6 +59,10 @@ Filter::make($values)->toArray();
 
 ```
 
+### To enable the Dominican currency we must modify the file Locale / Es.php in kwn / number-to-words
+```text
+ 'DOP' => [['peso dominicano', 'pesos dominicanos'], ['centavo', 'centavos']],
+```
 ## Change log
 
 Please see the [changelog](changelog.md) for more information on what has changed recently.
