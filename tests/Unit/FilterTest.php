@@ -77,15 +77,19 @@ class FilterTest extends TestCase
         $values = [
             [
                 'key' => 'MONTO',
-                'value' => 105,
+                'value' => 105.10,
+                'filters' => ['NumberLetter']
+            ],
+            [
+                'key' => 'MONTO_DECIMAL',
+                'value' => '15000.91',
                 'filters' => ['NumberLetter']
             ]
         ];
 
-        $this->assertTrue(
-            'RD$ 105.00, (ciento cinco Pesos Dominicanos)'
-            == Filter::make($values)->toArray()['MONTO']
-        );
+        $this->assertTrue('RD$ 105.10, (Ciento cinco pesos dominicanos con diez centavos)' == Filter::make($values)->toArray()['MONTO']);
+
+        $this->assertTrue('RD$ 15,000.91, (Quince mil pesos dominicanos con noventa y uno centavos)' == Filter::make($values)->toArray()['MONTO_DECIMAL']);
     }
 
     /** @test */
