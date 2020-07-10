@@ -3,8 +3,6 @@
 namespace Thepany\Template;
 
 use Illuminate\Support\ServiceProvider;
-use Thepany\Template\Locale\Custom_Currency;
-use NumberToWords\Legacy\Numbers\Words\Locale\Es;
 
 class TemplateServiceProvider extends ServiceProvider
 {
