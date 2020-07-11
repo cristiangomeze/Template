@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "3839f63de766df0006d96b582eea4a72",
+    "content-hash": "f3ef0ed5aafb30b8f0184cc5ec932168",
     "packages": [
         {
             "name": "brick/math",
@@ -339,17 +339,11 @@
         },
         {
             "name": "kwn/number-to-words",
-            "version": "1.10.0",
+            "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "https://github.com/kwn/number-to-words.git",
-                "reference": "989bd2c86338ff77d6939f933ba06d0cf45aef54"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/kwn/number-to-words/zipball/989bd2c86338ff77d6939f933ba06d0cf45aef54",
-                "reference": "989bd2c86338ff77d6939f933ba06d0cf45aef54",
-                "shasum": ""
+                "url": "https://github.com/THEPany/number-to-words.git",
+                "reference": "dd8f21b6686917e9baa7d2efd22cadc9744406f0"
             },
             "require": {
                 "php": ">=5.6|>=7.1"
@@ -364,7 +358,11 @@
                     "NumberToWords\\": "src"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "autoload-dev": {
+                "psr-4": {
+                    "NumberToWords\\": "tests"
+                }
+            },
             "license": [
                 "MIT"
             ],
@@ -384,7 +382,7 @@
                 "to",
                 "words"
             ],
-            "time": "2020-05-29T16:06:10+00:00"
+            "time": "2020-07-11T22:44:35+00:00"
         },
         {
             "name": "laravel/framework",
@@ -5748,7 +5746,9 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "kwn/number-to-words": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": [],

@@ -13,7 +13,7 @@
     "require": {
         "illuminate/support": "~7",
         "phpoffice/phpword": "^0.17.0",
-        "kwn/number-to-words": "^1.10",
+        "kwn/number-to-words": "dev-master",
         "symfony/process": "^5.0"
     },
     "require-dev": {
@@ -22,6 +22,12 @@
         "orchestra/testbench": "~5",
         "sempro/phpunit-pretty-print": "^1.0"
     },
+    "repositories": [
+        {
+            "type": "git",
+            "url": "https://github.com/THEPany/number-to-words.git"
+        }
+    ],
     "autoload": {
         "psr-4": {
             "Thepany\\Template\\": "src/"
