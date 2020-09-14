@@ -18,7 +18,7 @@ class Filter implements Arrayable
      * @var array
      */
     protected $filterAvailable = [
-        'DateLetter', 'DateFormat', 'NumberLetter', 'NumberFormat',
+        'DateWords', 'DateFormat', 'NumberWords', 'NumberFormat',
     ];
 
     public function __construct($values)

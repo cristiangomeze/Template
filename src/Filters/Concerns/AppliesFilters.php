@@ -14,7 +14,7 @@ trait AppliesFilters
      * @param  mixed  $parameters
      * @return bool
      */
-    public function appliesDateLetter($value, $parameters)
+    public function appliesDateWords($value, $parameters)
     {
         $date = null == $value
             ? now()
@@ -36,7 +36,7 @@ trait AppliesFilters
 
     }
 
-    public function appliesNumberLetter($value, $parameters)
+    public function appliesNumberWords($value, $parameters)
     {
         $numberToWords = new NumberToWords();
         $currencyTransformer = $numberToWords->getCurrencyTransformer('es');

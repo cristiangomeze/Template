@@ -15,7 +15,7 @@ class FilterTest extends TestCase
             [
                 'key' => 'FECHA',
                 'value' => '2020-03-01',
-                'filters' => ['dateletter', 'dont-exist']
+                'filters' => ['DateWords', 'dont-exist']
             ]
         ];
 
@@ -31,7 +31,7 @@ class FilterTest extends TestCase
             [
                 'value1' => 'FECHA',
                 'value2' => '2020-03-01',
-                'filters3' => ['dateletter', 'dont-exist']
+                'filters3' => ['DateWords', 'dont-exist']
             ]
         ];
 
@@ -45,7 +45,7 @@ class FilterTest extends TestCase
             [
                 'key' => 'FECHA',
                 'value' => '2020-03-01',
-                'filters' => ['dateLetter']
+                'filters' => ['DateWords']
             ]
         ];
 
@@ -61,7 +61,7 @@ class FilterTest extends TestCase
             [
                 'key' => 'FECHA',
                 'value' => '2019-08-08',
-                'filters' => ['dateLetter']
+                'filters' => ['DateWords']
             ]
         ];
 
@@ -78,12 +78,12 @@ class FilterTest extends TestCase
             [
                 'key' => 'MONTO',
                 'value' => 105.10,
-                'filters' => ['NumberLetter']
+                'filters' => ['NumberWords']
             ],
             [
                 'key' => 'MONTO_DECIMAL',
                 'value' => '15000.91',
-                'filters' => ['NumberLetter']
+                'filters' => ['NumberWords']
             ]
         ];
 
