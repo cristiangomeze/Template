@@ -49,7 +49,7 @@ $values = [
     [
         'key' => 'fecha',
         'value' => '2019-08-08',
-        'filters' => ['DateLetter'] // DateLetter, NumberLetter, NumericFormat:2, DateFormat:LLLL
+        'filters' => ['DateWords'] // DateWords, NumberWords, NumericFormat:2, DateFormat:LLLL
     ]
 ];
 
