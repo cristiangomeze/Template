@@ -1,6 +1,6 @@
 <?php
 
-namespace Thepany\Template\Filters\Concerns;
+namespace Cristiangomeze\Template\Filters\Concerns;
 
 use InvalidArgumentException;
 use NumberToWords\NumberToWords;
@@ -51,9 +51,24 @@ trait AppliesFilters
         return number_format($value, $decimal);
     }
 
-    private function appliesDateFormat($value, $parameters)
+    public function appliesDateFormat($value, $parameters)
     {
         return now()->parse($value)->isoFormat($parameters[0]);
+    }
+
+    public function appliesLowercase($value, $parameters)
+    {
+        return mb_strtolower($value);
+    }
+
+    public function appliesUppercase($value, $parameters)
+    {
+        return mb_strtoupper($value);
+    }
+
+    public function appliesCapitalize($value, $parameters)
+    {
+        return ucwords($value);
     }
 
     /**

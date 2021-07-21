@@ -1,6 +1,6 @@
 <?php
 
-namespace Thepany\Template\Files;
+namespace Cristiangomeze\Template\Files;
 
 class LocalTemporaryFile extends TemporaryFile
 {

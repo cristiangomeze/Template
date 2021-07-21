@@ -1,6 +1,6 @@
 <?php
 
-namespace Thepany\Template;
+namespace Cristiangomeze\Template;
 
 use Illuminate\Support\ServiceProvider;
 

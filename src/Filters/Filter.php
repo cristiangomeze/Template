@@ -1,6 +1,6 @@
 <?php
 
-namespace Thepany\Template\Filters;
+namespace Cristiangomeze\Template\Filters;
 
 use Illuminate\Validation\ValidationRuleParser;
 use Illuminate\Contracts\Support\Arrayable;
@@ -18,7 +18,13 @@ class Filter implements Arrayable
      * @var array
      */
     protected $filterAvailable = [
-        'DateWords', 'DateFormat', 'NumberWords', 'NumberFormat',
+        'DateWords', 
+        'DateFormat', 
+        'NumberWords',
+        'NumberFormat',
+        'Lowercase',
+        'Uppercase', 
+        'Capitalize',
     ];
 
     public function __construct($values)

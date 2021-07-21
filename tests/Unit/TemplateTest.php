@@ -1,9 +1,9 @@
 <?php
 
-namespace Thepany\Template\Tests\Unit;
+namespace Cristiangomeze\Template\Tests\Unit;
 
-use Thepany\Template\Template;
-use Thepany\Template\Tests\TestCase;
+use Cristiangomeze\Template\Template;
+use Cristiangomeze\Template\Tests\TestCase;
 
 class TemplateTest extends TestCase
 {

@@ -1,8 +1,8 @@
 <?php
 
-namespace Thepany\Template;
+namespace Cristiangomeze\Template;
 
-use Thepany\Template\Files\LocalTemporaryFile;
+use Cristiangomeze\Template\Files\LocalTemporaryFile;
 use Symfony\Component\Process\Process;
 use Symfony\Component\Process\Exception\ProcessFailedException;
 

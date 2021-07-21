@@ -1,10 +1,10 @@
 <?php
 
-namespace Thepany\Template;
+namespace Cristiangomeze\Template;
 
 use Illuminate\Http\Response;
 use PhpOffice\PhpWord\TemplateProcessor;
-use Thepany\Template\Files\LocalTemporaryFile;
+use Cristiangomeze\Template\Files\LocalTemporaryFile;
 
 class Template extends TemplateProcessor
 {

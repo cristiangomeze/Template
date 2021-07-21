@@ -1,21 +1,21 @@
 <?php
 
-namespace Thepany\Template\Tests\Unit;
+namespace Cristiangomeze\Template\Tests\Unit;
 
 use Illuminate\Contracts\Support\Arrayable;
-use Thepany\Template\Filters\Filter;
-use Thepany\Template\Tests\TestCase;
+use Cristiangomeze\Template\Filters\Filter;
+use Cristiangomeze\Template\Tests\TestCase;
 
 class FilterTest extends TestCase
 {
     /** @test */
-    function its_filter_not_exist_return_current_value()
+    function if_the_filter_does_not_exist_the_previous_value_will_be_returned()
     {
         $values = [
             [
                 'key' => 'FECHA',
                 'value' => '2020-03-01',
-                'filters' => ['DateWords', 'dont-exist']
+                'filters' => ['dont-exist', 'DateWords']
             ]
         ];
 
@@ -27,6 +27,7 @@ class FilterTest extends TestCase
     {
         $this->expectException(\Exception::class);
         $this->expectExceptionMessage('Some of the following indexes were not found: key, value, filter.');
+
         $values = [
             [
                 'value1' => 'FECHA',
@@ -89,7 +90,7 @@ class FilterTest extends TestCase
 
         $this->assertTrue('RD$ 105.10, (Ciento cinco pesos dominicanos con diez centavos)' == Filter::make($values)->toArray()['MONTO']);
 
-        $this->assertTrue('RD$ 15,000.91, (Quince mil pesos dominicanos con noventa y uno centavos)' == Filter::make($values)->toArray()['MONTO_DECIMAL']);
+        $this->assertTrue('RD$ 15,000.91, (Quince mil pesos dominicanos con noventa y un centavos)' == Filter::make($values)->toArray()['MONTO_DECIMAL']);
     }
 
     /** @test */
@@ -119,4 +120,60 @@ class FilterTest extends TestCase
 
         $this->assertTrue('domingo, 1 de marzo de 2020 0:00' === Filter::make($values)->toArray()['FECHA']);
     }
+
+     /** @test */
+     function it_can_apply_filter_lowercase()
+     {
+         $values = [
+             [
+                 'key' => 'NOMBRE',
+                 'value' => 'CRISTIAN GOMEZ',
+                 'filters' => ['Lowercase']
+             ]
+         ];
+ 
+         $this->assertTrue('cristian gomez' === Filter::make($values)->toArray()['NOMBRE']);
+     }
+
+      /** @test */
+      function it_can_apply_filter_uppercase()
+      {
+          $values = [
+              [
+                  'key' => 'NOMBRE',
+                  'value' => 'cristian gomez',
+                  'filters' => ['Uppercase']
+              ]
+          ];
+  
+          $this->assertTrue('CRISTIAN GOMEZ' === Filter::make($values)->toArray()['NOMBRE']);
+      }
+
+       /** @test */
+       function it_can_apply_filter_capitalize()
+       {
+           $values = [
+               [
+                   'key' => 'NOMBRE',
+                   'value' => 'cristian gomez',
+                   'filters' => ['Capitalize']
+               ]
+           ];
+   
+           $this->assertTrue('Cristian Gomez' === Filter::make($values)->toArray()['NOMBRE']);
+       }
+
+        /** @test */
+        function it_can_apply_filters_lowercase_and_capitalize()
+        {
+            $values = [
+                [
+                    'key' => 'NOMBRE',
+                    'value' => 'CRISTIAN GOMEZ',
+                    'filters' => ['Lowercase', 'Capitalize']
+                ]
+            ];
+    
+            $this->assertTrue('Cristian Gomez' === Filter::make($values)->toArray()['NOMBRE']);
+        }
 }

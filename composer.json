@@ -1,5 +1,5 @@
 {
-    "name": "thepany/template",
+    "name": "cristiangomeze/template",
     "description": "Convert word templates to pdf",
     "license": "MIT",
     "authors": [
@@ -8,36 +8,36 @@
             "email": "cristiangomeze@hotmail.com"
         }
     ],
-    "homepage": "https://github.com/thepany/template",
+    "homepage": "https://github.com/cristiangomeze/template",
     "keywords": ["Laravel", "Template"],
     "require": {
         "illuminate/support": "^8.0",
-        "phpoffice/phpword": "^0.18.1",
-        "symfony/process": "^5.2",
-        "kwn/number-to-words": "^1.12.1"
+        "symfony/process": "^5.3",
+        "kwn/number-to-words": "^2.0",
+        "phpoffice/phpword": "^0.18.2"
     },
     "require-dev": {
         "mockery/mockery": "^1.4.3",
-        "orchestra/testbench": "^6.15",
+        "orchestra/testbench": "^6.19",
         "sempro/phpunit-pretty-print": "^1.4"
     },
     "autoload": {
         "psr-4": {
-            "Thepany\\Template\\": "src/"
+            "Cristiangomeze\\Template\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Thepany\\Template\\Tests\\": "tests"
+            "Cristiangomeze\\Template\\Tests\\": "tests"
         }
     },
     "extra": {
         "laravel": {
             "providers": [
-                "Thepany\\Template\\TemplateServiceProvider"
+                "Cristiangomeze\\Template\\TemplateServiceProvider"
             ],
             "aliases": {
-                "Template": "Thepany\\Template\\Facades\\Template"
+                "Template": "Cristiangomeze\\Template\\Facades\\Template"
             }
         }
     }
