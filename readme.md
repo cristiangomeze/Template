@@ -12,7 +12,7 @@ This is a wrapper to use the [phpword template](https://phpword.readthedocs.io/e
 Via Composer
 
 ``` bash
-$ composer require Cristiangomeze/template
+$ composer require cristiangomeze/template
 ```
 
 ## Usage
