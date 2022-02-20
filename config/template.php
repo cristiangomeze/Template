@@ -3,6 +3,7 @@
 return [
 
     'command' => [
+        
         /*
         |--------------------------------------------------------------------------
         | Default Command Bin
@@ -20,6 +21,7 @@ return [
             'windows' => 'c:\Program Files\LibreOffice\program\soffice',
         ]
     ],
+
     'temporary_files' => [
 
         /*
@@ -53,5 +55,48 @@ return [
         |
         */
         'delete_after_rendering' => true,
+    ],
+
+    'to_words' => [
+
+        /*
+        |--------------------------------------------------------------------------
+        | Currency
+        |--------------------------------------------------------------------------
+        |
+        | This is the default currency that will be used when convert a number to words
+        | from your application.
+        |
+        | For more information about the support: https://github.com/kwn/number-to-words
+        |
+        */
+
+        'currency' => 'DOP',
+
+         /*
+        |--------------------------------------------------------------------------
+        | Currency Locale
+        |--------------------------------------------------------------------------
+        |
+        | This is the default locale in which your money values are formatted in
+        | for display.
+        |
+        | For more information about the support: https://github.com/kwn/number-to-words
+        |
+        */
+
+        'currency_locale' => 'es',
+
+         /*
+        |--------------------------------------------------------------------------
+        | Currency Locale
+        |--------------------------------------------------------------------------
+        |
+        | This is the currency symbol used in your application.
+        |
+        |
+        */
+        'currency_symbol' => 'RD$'
+
     ],
 ];

@@ -21,7 +21,7 @@ trait AppliesFilters
             : now()->parse($value);
 
         $numberToWords = new NumberToWords();
-        $numberTransformer = $numberToWords->getNumberTransformer('es');
+        $numberTransformer = $numberToWords->getNumberTransformer(config('template.to_words.currency_locale'));
 
         $dateLetter = ucwords($numberTransformer->toWords($date->day));
         $dateLetter .= " ({$date->day}) ";
@@ -33,15 +33,14 @@ trait AppliesFilters
         $dateLetter .= " ({$date->year})";
 
         return $dateLetter;
-
     }
 
     public function appliesNumberWords($value, $parameters)
     {
         $numberToWords = new NumberToWords();
-        $currencyTransformer = $numberToWords->getCurrencyTransformer('es');
+        $currencyTransformer = $numberToWords->getCurrencyTransformer(config('template.to_words.currency_locale'));
 
-        return 'RD$ ' .number_format($value, 2) .', ('. ucfirst($currencyTransformer->toWords($value * 100, 'DOP')) .')';
+        return config('template.to_words.currency_symbol').' ' .number_format($value, 2).', ('.ucfirst($currencyTransformer->toWords($value * 100, config('template.to_words.currency'))).')';
     }
 
     public function appliesNumberFormat($value, $parameters)

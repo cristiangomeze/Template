@@ -12,14 +12,14 @@ This is a wrapper to use the [phpword template](https://phpword.readthedocs.io/e
 Via Composer
 
 ``` bash
-$ composer require thepany/template
+$ composer require Cristiangomeze/template
 ```
 
 ## Usage
 
 ```php
 
-use Thepany\Template\Template;
+use Cristiangomeze\Template\Template;
 
 $values = [
           'firstname' => 'John',
@@ -43,7 +43,7 @@ return Template::make('/home/user/any_word_document.docx')
 
 ```php
 
-use Thepany\Template\Filters\Filter;
+use Cristiangomeze\Template\Filters\Filter;
 
 $values = [
     [
