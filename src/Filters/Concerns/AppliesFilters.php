@@ -86,5 +86,4 @@ trait AppliesFilters
             throw new InvalidArgumentException("Validation rule $rule requires at least $count parameters.");
         }
     }
-
 }

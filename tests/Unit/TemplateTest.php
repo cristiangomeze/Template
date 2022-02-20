@@ -8,7 +8,7 @@ use Cristiangomeze\Template\Tests\TestCase;
 class TemplateTest extends TestCase
 {
     /** @test */
-    function it_can_pass_word_template()
+    public function it_can_pass_word_template()
     {
         $object = Template::make(__DIR__.'/../_files/template.docx');
 
@@ -17,12 +17,12 @@ class TemplateTest extends TestCase
         $this->assertEquals([
             'name',
             'last_name',
-            'content'
+            'content',
         ], $object->getVariables());
     }
 
     /** @test */
-    function it_can_preview_template()
+    public function it_can_preview_template()
     {
         $this->assertInstanceOf('Illuminate\Http\Response', Template::make(__DIR__.'/../_files/template.docx')->preview());
     }

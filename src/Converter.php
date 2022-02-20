@@ -3,8 +3,8 @@
 namespace Cristiangomeze\Template;
 
 use Cristiangomeze\Template\Files\LocalTemporaryFile;
-use Symfony\Component\Process\Process;
 use Symfony\Component\Process\Exception\ProcessFailedException;
+use Symfony\Component\Process\Process;
 
 class Converter
 {
@@ -63,20 +63,18 @@ class Converter
             'pdf',
             $tempDir,
             '--outdir',
-            $outDir
+            $outDir,
         ];
     }
 
     protected function removeTemporaryFiles()
     {
         if ($this->docxFile instanceof LocalTemporaryFile) {
-
             $this->docxFile->delete();
         }
 
         if ($this->pdfFile instanceof LocalTemporaryFile
             && config('template.temporary_files.delete_after_rendering')) {
-
             $this->pdfFile->delete();
         }
     }

@@ -72,7 +72,7 @@ class LocalTemporaryFile extends TemporaryFile
      */
     public function delete(): bool
     {
-        if (@unlink($this->filePath) || !$this->exists()) {
+        if (@unlink($this->filePath) || ! $this->exists()) {
             return true;
         }
 

@@ -2,9 +2,9 @@
 
 namespace Cristiangomeze\Template;
 
+use Cristiangomeze\Template\Files\LocalTemporaryFile;
 use Illuminate\Http\Response;
 use PhpOffice\PhpWord\TemplateProcessor;
-use Cristiangomeze\Template\Files\LocalTemporaryFile;
 
 class Template extends TemplateProcessor
 {
@@ -12,7 +12,7 @@ class Template extends TemplateProcessor
 
     public function __construct($documentTemplate)
     {
-        $this->converter = New Converter;
+        $this->converter = new Converter();
 
         parent::__construct($documentTemplate);
     }
@@ -38,7 +38,7 @@ class Template extends TemplateProcessor
         return $this;
     }
 
-    public function preview($fileName =  'document.pdf')
+    public function preview($fileName = 'document.pdf')
     {
         return new Response($this->output(), 200, [
             'Content-Type' => 'application/pdf',

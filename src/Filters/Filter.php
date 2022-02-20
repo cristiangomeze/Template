@@ -2,9 +2,9 @@
 
 namespace Cristiangomeze\Template\Filters;
 
-use Illuminate\Validation\ValidationRuleParser;
 use Illuminate\Contracts\Support\Arrayable;
 use Illuminate\Support\Collection;
+use Illuminate\Validation\ValidationRuleParser;
 
 class Filter implements Arrayable
 {
@@ -18,12 +18,12 @@ class Filter implements Arrayable
      * @var array
      */
     protected $filterAvailable = [
-        'DateWords', 
-        'DateFormat', 
+        'DateWords',
+        'DateFormat',
         'NumberWords',
         'NumberFormat',
         'Lowercase',
-        'Uppercase', 
+        'Uppercase',
         'Capitalize',
     ];
 
@@ -58,13 +58,13 @@ class Filter implements Arrayable
         });
     }
 
-    protected function getFilterValue(Array $item)
+    protected function getFilterValue(array $item)
     {
         return [
             $item['key'] => $this->applyFilter(
                 $item['value'],
                 $item['filters']
-            )
+            ),
         ];
     }
 
