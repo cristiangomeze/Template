@@ -25,10 +25,10 @@ trait AppliesTransforms
         return __(':day_in_word (:day) :day_or_days del mes de :month_in_word del año :year_in_word (:year)', [
             'day_in_word' => ucwords($numberTransformer->toWords($date->day)),
             'day' => $date->day,
-            'day_or_days' =>  $date->day > 1 ? 'Días' : 'Día',
+            'day_or_days' => $date->day > 1 ? 'Días' : 'Día',
             'month_in_word' => ucfirst($date->isoformat('MMMM')),
             'year_in_word' => ucwords($numberTransformer->toWords($date->year)),
-            'year' => $date->year
+            'year' => $date->year,
         ]);
     }
 

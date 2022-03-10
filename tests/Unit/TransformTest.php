@@ -2,8 +2,8 @@
 
 namespace Cristiangomeze\Template\Tests\Unit;
 
-use Cristiangomeze\Template\Transforms\Transform;
 use Cristiangomeze\Template\Tests\TestCase;
+use Cristiangomeze\Template\Transforms\Transform;
 use Illuminate\Contracts\Support\Arrayable;
 
 class TransformTest extends TestCase
