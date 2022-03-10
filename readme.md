@@ -2,8 +2,6 @@
 
 [![Latest Version on Packagist][ico-version]][link-packagist]
 [![Total Downloads][ico-downloads]][link-downloads]
-[![Build Status][ico-travis]][link-travis]
-[![StyleCI][ico-styleci]][link-styleci]
 
 This is a wrapper to use the [phpword template](https://phpword.readthedocs.io/en/latest/templates-processing.html), which allows you to have the final document rendered in the browser. Take a look at [contributing.md](contributing.md) to see a to do list.
 
@@ -43,26 +41,22 @@ return Template::make('/home/user/any_word_document.docx')
 
 ```php
 
-use Cristiangomeze\Template\Filters\Filter;
+use Cristiangomeze\Template\Transforms\Transform;
 
 $values = [
     [
         'key' => 'fecha',
         'value' => '2019-08-08',
-        'filters' => ['DateWords'] // DateWords, NumberWords, NumericFormat:2, DateFormat:LLLL
+        'transforms' => ['DateWords'] // DateWords, NumberWords, NumericFormat:2, DateFormat:LLLL
     ]
 ];
 
-Filter::make($values)->toArray();
+Transform::make($values)->toArray();
 
 // 'fecha' => 'Ocho (8) Días del mes de Agosto del año Dos Mil Diecinueve (2019)'
 
 ```
 
-### To enable the Dominican currency we must modify the file Locale / Es.php in kwn / number-to-words
-```text
- 'DOP' => [['peso dominicano', 'pesos dominicanos'], ['centavo', 'centavos']],
-```
 ## Change log
 
 Please see the [changelog](changelog.md) for more information on what has changed recently.
@@ -90,14 +84,14 @@ If you discover any security related issues, please email author email instead o
 
 license. Please see the [license file](license.md) for more information.
 
-[ico-version]: https://img.shields.io/packagist/v/thepany/template.svg?style=flat-square
-[ico-downloads]: https://img.shields.io/packagist/dt/thepany/template.svg?style=flat-square
-[ico-travis]: https://img.shields.io/travis/thepany/template/master.svg?style=flat-square
+[ico-version]: https://img.shields.io/packagist/v/cristiangomeze/template.svg?style=flat-square
+[ico-downloads]: https://img.shields.io/packagist/dt/cristiangomeze/template.svg?style=flat-square
+[ico-travis]: https://img.shields.io/travis/cristiangomeze/template/master.svg?style=flat-square
 [ico-styleci]: https://styleci.io/repos/12345678/shield
 
-[link-packagist]: https://packagist.org/packages/thepany/template
-[link-downloads]: https://packagist.org/packages/thepany/template
-[link-travis]: https://travis-ci.org/thepany/template
+[link-packagist]: https://packagist.org/packages/cristiangomeze/template
+[link-downloads]: https://packagist.org/packages/cristiangomeze/template
+[link-travis]: https://travis-ci.org/cristiangomeze/template
 [link-styleci]: https://styleci.io/repos/12345678
-[link-author]: https://github.com/thepany
+[link-author]: https://github.com/cristiangomeze
 [link-contributors]: ../../contributors

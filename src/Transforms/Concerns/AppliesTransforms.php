@@ -1,11 +1,11 @@
 <?php
 
-namespace Cristiangomeze\Template\Filters\Concerns;
+namespace Cristiangomeze\Template\Transforms\Concerns;
 
 use InvalidArgumentException;
 use NumberToWords\NumberToWords;
 
-trait AppliesFilters
+trait AppliesTransforms
 {
     /**
      * Convert a date in its letter representation.
@@ -20,25 +20,21 @@ trait AppliesFilters
             ? now()
             : now()->parse($value);
 
-        $numberToWords = new NumberToWords();
-        $numberTransformer = $numberToWords->getNumberTransformer(config('template.to_words.currency_locale'));
+        $numberTransformer = (new NumberToWords())->getNumberTransformer(config('template.to_words.currency_locale'));
 
-        $dateLetter = ucwords($numberTransformer->toWords($date->day));
-        $dateLetter .= " ({$date->day}) ";
-        $dateLetter .= $date->day > 1 ? 'Días ' : 'Día ';
-        $dateLetter .= 'del mes de ';
-        $dateLetter .= ucfirst($date->isoformat('MMMM'));
-        $dateLetter .= ' del año ';
-        $dateLetter .= ucwords($numberTransformer->toWords($date->year));
-        $dateLetter .= " ({$date->year})";
-
-        return $dateLetter;
+        return __(':day_in_word (:day) :day_or_days del mes de :month_in_word del año :year_in_word (:year)', [
+            'day_in_word' => ucwords($numberTransformer->toWords($date->day)),
+            'day' => $date->day,
+            'day_or_days' =>  $date->day > 1 ? 'Días' : 'Día',
+            'month_in_word' => ucfirst($date->isoformat('MMMM')),
+            'year_in_word' => ucwords($numberTransformer->toWords($date->year)),
+            'year' => $date->year
+        ]);
     }
 
     public function appliesNumberWords($value, $parameters)
     {
-        $numberToWords = new NumberToWords();
-        $currencyTransformer = $numberToWords->getCurrencyTransformer(config('template.to_words.currency_locale'));
+        $currencyTransformer = (new NumberToWords())->getCurrencyTransformer(config('template.to_words.currency_locale'));
 
         return config('template.to_words.currency_symbol').' ' .number_format($value, 2).', ('.ucfirst($currencyTransformer->toWords($value * 100, config('template.to_words.currency'))).')';
     }

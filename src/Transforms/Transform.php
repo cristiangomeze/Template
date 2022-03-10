@@ -1,23 +1,24 @@
 <?php
 
-namespace Cristiangomeze\Template\Filters;
+namespace Cristiangomeze\Template\Transforms;
 
+use Exception;
 use Illuminate\Contracts\Support\Arrayable;
 use Illuminate\Support\Collection;
 use Illuminate\Validation\ValidationRuleParser;
 
-class Filter implements Arrayable
+class Transform implements Arrayable
 {
-    use Concerns\AppliesFilters;
+    use Concerns\AppliesTransforms;
 
     protected $values;
 
     /**
-     * Filters available for formatting fields values
+     * Transforms available for formatting fields values
      *
      * @var array
      */
-    protected $filterAvailable = [
+    protected $transformAvailable = [
         'DateWords',
         'DateFormat',
         'NumberWords',
@@ -29,9 +30,7 @@ class Filter implements Arrayable
 
     public function __construct($values)
     {
-        $this->values = $values instanceof Collection
-            ? $this->values = $values
-            : new Collection($values);
+        $this->values = Collection::wrap($values);
     }
 
     public static function make($values)
@@ -51,29 +50,27 @@ class Filter implements Arrayable
 
     protected function getValues()
     {
-        return $this->values->each(function ($value) {
-            $this->hasKeys($value);
-        })->map(function ($item) {
-            return $this->getFilterValue($item);
-        });
+        return $this->values
+            ->each(fn ($value) => $this->hasKeys($value))
+            ->map(fn ($item) => $this->getFormattedValues($item));
     }
 
-    protected function getFilterValue(array $item)
+    protected function getFormattedValues(array $item)
     {
         return [
-            $item['key'] => $this->applyFilter(
+            $item['key'] => $this->applyTransform(
                 $item['value'],
-                $item['filters']
+                $item['transforms']
             ),
         ];
     }
 
-    protected function applyFilter($value, array $filters)
+    protected function applyTransform($value, array $filters)
     {
         foreach ($filters as $filter) {
             [$filter, $parameters] = ValidationRuleParser::parse($filter);
 
-            if ($this->canNotApplyFilter($filter)) {
+            if ($this->canNotApplyTransform($filter)) {
                 break;
             }
 
@@ -84,23 +81,23 @@ class Filter implements Arrayable
         return $value;
     }
 
-    protected function canNotApplyFilter($filter)
+    protected function canNotApplyTransform($filter)
     {
-        return $filter == '' || $this->filterNotExists($filter);
+        return $filter == '' || $this->transformNotExists($filter);
     }
 
-    protected function filterNotExists($filter)
+    protected function transformNotExists($filter)
     {
-        return ! in_array($filter, $this->filterAvailable);
+        return ! in_array($filter, $this->transformAvailable);
     }
 
     protected function hasKeys(array $value)
     {
         if (! array_key_exists('key',  $value)
             && ! array_key_exists('value',  $value)
-            && ! array_key_exists('filters',  $value)
+            && ! array_key_exists('transforms',  $value)
         ) {
-            throw new \Exception("Some of the following indexes were not found: key, value, filter.");
+            throw new Exception("Some of the following indexes were not found: key, value, transform.");
         }
     }
 }

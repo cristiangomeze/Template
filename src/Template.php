@@ -38,6 +38,13 @@ class Template extends TemplateProcessor
         return $this;
     }
 
+    public function addWatermark(string $watermark = '')
+    {
+        $this->setValue('WATERMARK', $watermark);
+
+        return $this;
+    }
+
     public function preview($fileName = 'document.pdf')
     {
         return new Response($this->output(), 200, [
